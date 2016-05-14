@@ -30,13 +30,13 @@ public class RootModel {
 	// --------------------------
 	// 业务变量
 	// --------------------------
-	public String projectName = null;
+	public String projectName  = null;
 	
 	public String moduleNameEn = null;
 	public String moduleNameGb = null;
-
-	public String tableNameEn = null;
-	public String tableNameGb = null;
+	
+	public String tableNameEn  = null;
+	public String tableNameGb  = null;
 
 	// --------------------------
 	// 数据库变量
@@ -73,7 +73,7 @@ public class RootModel {
 		}
 		
 		table = DatabaseServer.queryTableInfo(this.tableNameEn);
-		moduleNameEn = tableNameEn.toLowerCase();
+		table.tableName = new StringNode(tableNameEn.toLowerCase());
 		moduleNameEn = moduleNameEn.toLowerCase();
 		tableNameEn = tableNameEn.toLowerCase();
 

@@ -8,6 +8,8 @@ public class TypeNode {
 	public String type_db;
 	public String type_java;
 	public String type_mybatis;
+	public String type_php_property;
+
 	public String full = null;
 	public String mini = null;
 	
@@ -29,7 +31,7 @@ public class TypeNode {
 			type_java = "Integer";
 			mini = "Integer";
 			full = "java.lang.Integer";
-		} else if (type_db.equalsIgnoreCase("varchar") || type_db.equalsIgnoreCase("VARCHAR2")) {
+		} else if (type_db.equalsIgnoreCase("varchar") || type_db.equalsIgnoreCase("VARCHAR2") || type_db.equalsIgnoreCase("char")) {
 			type_java = "String";
 			mini = "String";
 			full = "java.lang.String";
@@ -114,5 +116,12 @@ public class TypeNode {
 	public void setType_mybatis(String type_mybatis) {
 		this.type_mybatis = type_mybatis;
 	}
-	
+
+	public String getType_php_property() {
+		return type_php_property;
+	}
+
+	public void setType_php_property(String type_php_property) {
+		this.type_php_property = type_php_property;
+	}
 }

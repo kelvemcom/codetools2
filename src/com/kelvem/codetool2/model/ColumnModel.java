@@ -15,6 +15,7 @@ public class ColumnModel {
 	public int columnSize;
 	public String columnDesc;
 	public boolean isNullEnable = false; // ###
+	private ColumnExtend extend = null;
 	
 	
 	
@@ -41,12 +42,22 @@ public class ColumnModel {
 	}
 	public void setColumnDesc(String columnDesc) {
 		this.columnDesc = columnDesc;
+		this.extend = new ColumnExtend(columnDesc);
 	}
 	public boolean isNullEnable() {
 		return isNullEnable;
 	}
 	public void setNullEnable(boolean isNullEnable) {
 		this.isNullEnable = isNullEnable;
+	}
+	public ColumnExtend getExtend() {
+		if (this.extend == null) {
+			this.extend = new ColumnExtend(columnDesc);
+		}
+		return extend;
+	}
+	public void setExtend(ColumnExtend extend) {
+		this.extend = extend;
 	}
 	
 	

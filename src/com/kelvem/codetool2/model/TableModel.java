@@ -20,9 +20,14 @@ public class TableModel {
 	
 	public List<ColumnModel> listColumn = new ArrayList<ColumnModel>();
 	
+	public List<ColumnModel> listModel = null;
+	public List<ColumnModel> listQuery = null;
+	
 	public ColumnModel keyColumn = null;
 	
 	public StringNode tableName = null;
+	private ColumnModel nameColumn = null;
+	private ColumnModel enableColumn = null;
 	public StringNode forTest = null;
 	
 	
@@ -71,6 +76,69 @@ public class TableModel {
 	}
 	public void setKeyColumn(ColumnModel keyColumn) {
 		this.keyColumn = keyColumn;
+	}
+	
+	public List<ColumnModel> getListModel() {
+		if (listModel == null) {
+			listModel = new ArrayList<ColumnModel>();
+			for (ColumnModel column : this.getListColumn()) {
+				if (column.getExtend().getIsModel()) {
+					listModel.add(column);
+				}
+			}
+		}
+		return listModel;
+	}
+	public void setListModel(List<ColumnModel> listModel) {
+		this.listModel = listModel;
+	}
+	public List<ColumnModel> getListQuery() {
+		if (listQuery == null) {
+			listQuery = new ArrayList<ColumnModel>();
+			for (ColumnModel column : this.getListColumn()) {
+				if (column.getExtend().getIsQuery()) {
+					listQuery.add(column);
+				}
+			}
+		}
+		return listQuery;
+	}
+	public void setListQuery(List<ColumnModel> listQuery) {
+		this.listQuery = listQuery;
+	}
+	public ColumnModel getNameColumn() {
+		if (this.nameColumn == null) {
+			for (ColumnModel column : listColumn) {
+				if ("name".equals(column.columnName._aaa_aaa)
+						|| (tableName + "_name").equals(column.columnName._aaa_aaa)
+						|| "email".equals(column.columnName._aaa_aaa)
+						|| "mail".equals(column.columnName._aaa_aaa)) {
+					this.nameColumn = column;
+					break;
+				}
+			}
+		}
+		return nameColumn;
+	}
+	public void setNameColumn(ColumnModel nameColumn) {
+		this.nameColumn = nameColumn;
+	}
+	public ColumnModel getEnableColumn() {
+		if (this.enableColumn == null) {
+			for (ColumnModel column : listColumn) {
+				if ("del_flag".equals(column.columnName._aaa_aaa)
+						|| "enable".equals(column.columnName._aaa_aaa)
+						|| "enable_enum".equals(column.columnName._aaa_aaa)
+						|| "enable_flag".equals(column.columnName._aaa_aaa)) {
+					this.nameColumn = column;
+					break;
+				}
+			}
+		}
+		return enableColumn;
+	}
+	public void setEnableColumn(ColumnModel enableColumn) {
+		this.enableColumn = enableColumn;
 	}
 
 }
