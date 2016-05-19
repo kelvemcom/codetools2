@@ -13,5 +13,7 @@ hs_err_pid*
 /.settings
 /out
 /code_template
+/code_template*
+/code_origin
 /database.properties
 /codetool2.properties
